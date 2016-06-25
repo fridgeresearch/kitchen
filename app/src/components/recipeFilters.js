@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2016 Jake Lussier (Stanford University)
@@ -19,3 +20,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+import React from 'react'
+
+module.exports = ({includeIngredientNames, excludeIngredientNames, search}) => {
+  if(search.length || includeIngredientNames.length || excludeIngredientNames.length){
+      return (
+	<ul className="table-view">
+	  <li className="table-view-cell filters">
+	    {search.length ? "results for" : "recipes"}
+	    <span className="recipeSearch">
+	      {search.length ? ' "'+search+'"' : ""}
+	    </span>
+	    {includeIngredientNames.length ? " including ingredients" : ""}
+	    <span className="includeIngredients">
+	      {includeIngredientNames.length ? " "+includeIngredientNames.join(', ') : ""}
+	    </span>
+	    {includeIngredientNames.length && excludeIngredientNames.length ? " but not" : ""}
+	    {!includeIngredientNames.length && excludeIngredientNames.length ? " excluding ingredients" : ""}
+	    <span className="excludeIngredients">
+	      {excludeIngredientNames.length ? " "+excludeIngredientNames.join(', ') : ""}
+	    </span>
+	  </li>
+	</ul>
+      )
+  }
+  return (<div></div>)  
+}

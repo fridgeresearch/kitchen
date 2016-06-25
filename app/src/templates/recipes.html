@@ -1,0 +1,141 @@
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2016 Jake Lussier (Stanford University)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-status-bar-style" content="translucent">
+    <link rel="stylesheet" type="text/css" href="loader.css" />
+    <link rel="stylesheet" type="text/css" href="pure-release-0.6.0/grids-min.css" />
+    <link rel="stylesheet" type="text/css" href="ratchet.min.css" />
+    <link rel="stylesheet" type="text/css" href="ratchet-theme-ios.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Recipes</title>
+  </head>
+  <body>
+    <header class="bar bar-nav">
+      <form id="recipeSearch">
+        <div class="pure-g">
+          <!--<div class="pure-u-4-24">
+	    <a id="cook" href="./interactiveCooking.html">
+	      <button class="btn pull-left" style="width:50px; padding-left:0px; padding-right:0px;">
+		Cook
+	      </button>
+            </a>
+          </div>-->
+          <div class="pure-u-20-24">
+            <input type="search" placeholder="Find recipes" id="recipeKeywords">
+          </div>
+          <div class="pure-u-4-24">
+            <a id="filter" href="#filterModal">
+	      <button class="btn pull-right" style="width:50px; padding-left:0px; padding-right:0px;">
+		Filter
+	      </button>
+            </a>
+          </div>
+	</div>
+      </form>
+    </header>
+    <nav class="bar bar-tab bar-footer">
+      <a id="inventory-page" href="./index.html" data-transition="fade" class="tab-item"><i class="icon material-icons">view_comfy</i></a>
+      <a id="shopping-page" href="./shopping.html" data-transition="fade" class="tab-item"><i class="icon material-icons">shopping_basket</i></a>
+      <a id="recipes-page" href="./recipes.html" data-transition="fade" class="tab-item active"><i class="icon material-icons">local_dining</i></a>
+      <a id="fridge-page" href="./fridge.html" data-transition="fade" class="tab-item"><i class="icon material-icons">kitchen</i></a>
+    </nav>
+    <div id="content" class="content">
+      <div id="filters"></div>
+      <div id="recipes">
+	<div id="spinner">
+          <div id="bar1"></div>
+          <div id="bar2"></div>
+          <div id="bar3"></div>
+          <div id="bar4"></div>
+          <div id="bar5"></div>
+          <div id="bar6"></div>
+          <div id="bar7"></div>
+          <div id="bar8"></div>
+          <div id="bar9"></div>
+          <div id="bar10"></div>
+          <div id="bar11"></div>
+          <div id="bar12"></div>
+        </div>
+      </div>
+      
+      <div id="filterModal" class="modal modalScroll">
+	<!-- pseudo header -->
+	<div class="pseudo-header-nav">
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+	      <a id="filterModalCancel" href="#filterModal" class="link-button">Cancel</a>
+	    </div>
+            <div class="pure-u-16-24 text-align-center">
+	      <h1 class="pseudo-title">Filter</h1>
+	    </div>
+	    <div class="pure-u-4-24">
+	      <a id="filterModalSearch" href="#filterModal" class="link-button">Search</a>
+	    </div>
+	  </div>
+	</div>
+	<!-- inventory -->
+	<div id="filterModalInventory" class="content-padded">
+	</div>
+      </div>
+
+      <div id="chefsModal" class="modal">
+	<!-- pseudo header -->
+	<div class="pseudo-header-nav">
+          <div class="pure-g">
+            <div class="pure-u-4-24">
+	      <a id="chefsModalCancel" href="#chefsModal" class="pull-left link-icon">
+		<i class="icon material-icons">clear</i>
+              </a>
+	    </div>
+            <div class="pure-u-16-24 text-align-center">
+	      <h1 class="pseudo-title">Chefs</h1>
+	    </div>
+	  </div>
+	</div>
+	<!-- chefs -->
+	<div id="chefsModalOptions" class="content-padded">
+	  <div class="pure-g">
+            <div class="pure-u-12-24 text-align-center">
+	      <a id="interactiveCookingLink" href="./interactiveCooking.html" class="link-button">Interactive</a>
+	    </div>
+            <div class="pure-u-12-24 text-align-center">
+	      <a class="link-button">Fitness</a>
+	    </div>
+	  </div>
+	</div>
+      </div>      
+    </div> 
+    <script type="text/javascript" src="./linkHandling.js"></script>
+    <script type="text/javascript" src="./ratchet.min.js"></script>
+    <script type="text/javascript" src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

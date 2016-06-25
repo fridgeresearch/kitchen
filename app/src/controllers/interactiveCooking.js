@@ -1,10 +1,7 @@
-import datetime, sys
-from os.path import *
-
-MIT = """
+/*
 The MIT License (MIT)
 
-Copyright (c) %04d Jake Lussier (Stanford University)
+Copyright (c) 2016 Jake Lussier (Stanford University)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +20,28 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-""" % datetime.date.today().year
+*/
+import React from 'react'
+import ReactDOM from 'react-dom'
+import xhr from 'xhr'
+import InteractiveCookingComponent from '../components/interactiveCooking'
+import interactiveCookingUtils from '../utils/interactiveCooking'
 
-for f in sys.argv[1:]:
-        ext = splitext(f)[1]
-        if ext == ".py":
-                mit = '\"\"\"' + MIT + '\"\"\"'
-        elif ext == ".js":
-                mit = '/*' + MIT + '*/'
-        elif ext == ".html":
-                mit = '<!--' + MIT + '-->'
-        else:
-                raise Exception("Unknown extension %s."%ext)
-        lines = open( f, 'r' ).read()
-        open( f, 'w' ).write( mit+"\n"+lines )
+module.exports = {
+    run: function(appState) {
+	console.log("controller: interactiveCooking")
+	interactiveCookingUtils.initialize(appState)
+	interactiveCookingUtils.registerStaticCallbacks()
+	let url = appState.baseUrl + '/split?' + JSON.stringify({previousSplits: appState.recipeSearch.splits})
+	xhr(
+	{url: url, headers: appState.headers, json: true}, 
+	(err, req, body) => {
+	    console.log("getSplit body =", body)
+	    appState.recipeSearch.splits.push([body, null])
+	    let split = appState.recipeSearch.splits[appState.recipeSearch.splits.length-1][0]
+	    ReactDOM.render(<InteractiveCookingComponent split={split} />,
+			document.getElementById('interactiveCooking'))
+	    interactiveCookingUtils.registerDynamicCallbacks()
+	})
+    }
+}

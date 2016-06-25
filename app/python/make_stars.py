@@ -1,10 +1,7 @@
-import datetime, sys
-from os.path import *
-
-MIT = """
+"""
 The MIT License (MIT)
 
-Copyright (c) %04d Jake Lussier (Stanford University)
+Copyright (c) 2016 Jake Lussier (Stanford University)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +20,24 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-""" % datetime.date.today().year
+"""
+import os, argparse
+from os.path import *
 
-for f in sys.argv[1:]:
-        ext = splitext(f)[1]
-        if ext == ".py":
-                mit = '\"\"\"' + MIT + '\"\"\"'
-        elif ext == ".js":
-                mit = '/*' + MIT + '*/'
-        elif ext == ".html":
-                mit = '<!--' + MIT + '-->'
-        else:
-                raise Exception("Unknown extension %s."%ext)
-        lines = open( f, 'r' ).read()
-        open( f, 'w' ).write( mit+"\n"+lines )
+STAR_DIR = join(dirname(dirname(abspath(__file__))), "public", "icons", "stars")
+
+if __name__ == "__main__":
+    
+    parser = argparse.ArgumentParser(description='.')
+    parser.add_argument("--output", help="Output directory.", default=STAR_DIR)
+    args = parser.parse_args()
+    
+    for i in range(0, 51, 5):
+        rating = i / 10.0
+        full, half, empty = int(rating), int(rating+0.5)-int(rating), 5-int(rating+0.5)
+        stars = " ".join([join(STAR_DIR, "full-star.svg")]*full) + " "
+        stars = stars + " ".join([join(STAR_DIR, "half-star.svg")]*half) + " "
+        stars = stars + " ".join([join(STAR_DIR, "empty-star.svg")]*empty)
+        fpath = join(args.output, ("stars-%0.1f"%rating).replace(".","-")+".jpg")
+        os.system("montage %s -tile 5x1 -geometry +2+0 %s" % (stars, fpath))
+        

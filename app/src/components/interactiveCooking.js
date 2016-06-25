@@ -1,10 +1,7 @@
-import datetime, sys
-from os.path import *
-
-MIT = """
+/*
 The MIT License (MIT)
 
-Copyright (c) %04d Jake Lussier (Stanford University)
+Copyright (c) 2016 Jake Lussier (Stanford University)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +20,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-""" % datetime.date.today().year
+*/
+import React from 'react'
 
-for f in sys.argv[1:]:
-        ext = splitext(f)[1]
-        if ext == ".py":
-                mit = '\"\"\"' + MIT + '\"\"\"'
-        elif ext == ".js":
-                mit = '/*' + MIT + '*/'
-        elif ext == ".html":
-                mit = '<!--' + MIT + '-->'
-        else:
-                raise Exception("Unknown extension %s."%ext)
-        lines = open( f, 'r' ).read()
-        open( f, 'w' ).write( mit+"\n"+lines )
+module.exports = ({split}) => {
+    console.log("split =", split)
+    return (
+      <div>
+	<div className="pure-g">
+	  <div className="pure-u-24-24 text-align-center">
+	    Do you have {split}?
+	  </div>
+	</div>
+	<div className="pure-g">
+	  <div className="pure-u-12-24 text-align-center">
+	    <a id="interactiveNo" className="link-button" href="./interactiveCooking.html">
+	      No
+	    </a>
+	  </div>
+	  <div className="pure-u-12-24 text-align-center">
+	    <a id="interactiveYes" className="link-button" href="./interactiveCooking.html">
+	      Yes
+	    </a>
+	  </div>
+	</div>
+      </div>
+    )
+}

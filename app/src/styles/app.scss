@@ -1,0 +1,365 @@
+/* Place all app stylings in this file */
+/* COMMON */
+.bar.bar-nav {
+  .non-seg-control.control-item {
+    &.active {
+      color: #428bca;
+    }
+    color: #929292;
+  }
+}
+header a {
+  color: #428bca;
+}
+.hidden {
+  display: none;
+}
+.text-align-center {
+  text-align: center;	     
+}
+.two-line-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* INVENTORY */
+/* INVENTORY - SHOPPING ACTION*/
+.inventory-action {
+  font: Arial;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background-color: #ff5a5f;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 5px 8px;
+  a {
+    width: 100%;
+  }
+  button {
+    background-color: #ff5a5f;
+    padding: 2px;
+    border: 1px solid #fff;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+  .header{
+    font-size: 12px;
+    color: #fff;  
+    line-height: 18px;
+  }
+  .details{
+    font-size: 10px;
+    color: #eee;
+    line-height: 13px;
+  }
+}
+/* INVENTORY - MODALS */
+.dim {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 0%;
+  background-color: black;
+  background: rgba(0, 0, 0, 0.75);
+  z-index:12;
+}
+.confirm {
+  position: fixed;
+  width: 80%;
+  left:10%;
+  top: 60%;
+  background-color: white;
+  z-index:13;
+  margin:0;
+  .table-view-cell.confirm-info {
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+  }
+  .table-view-cell.confirm-options {
+    text-align: center;
+    padding: 15px;
+    .delete {
+      border-right: 1px solid #ddd;
+      a {
+        color: red;
+      }
+    }
+  }
+}
+/* INVENTORY - ITEM */
+.item-container-8-24{
+  padding: 3px;
+  height: 125px;
+  position: relative;
+  div.item-thumbnail-8-24 {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  div.item-fraction-life-8-24 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 40px;
+    width: 40px;
+    img {
+      height: 100%;
+      width: 100%
+    }
+  }
+  div.item-remaining-time-8-24 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+  }
+  div.item-name-8-24 {
+    position: absolute;
+    top: 75%;
+    height: 23%;
+    left: 3px;
+    right: 3px;
+    padding: 0.5px;
+    line-height: 120%;
+    z-index: 10;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, .9);
+    color: #777;
+  }
+}
+/* INVENTORY - HEADER */
+header.bar.bar-nav {
+  /*height: auto;*/
+  height: 44px;
+  #inventorySearch {
+    input[type=search] {
+      width: 70%;
+      margin: 6px;
+      &.invisible {
+        visibility: hidden;
+      }
+    }
+
+    #backBtn {
+      margin-right: 5px;
+    }
+
+    #selectBtn, #cancelBtn {
+      &.active {
+        display: none;
+      }
+    }
+  }
+}
+/* INVENTORY - SELECTS */
+.select {
+  position: absolute;
+  display: none;
+  top: 3px;
+  height: 96%;
+  width: 96%;
+  z-index: 11;
+  &.on {
+    display: block
+  }
+  &.selected {
+    border: 3px solid #428bca;
+  }
+}
+
+
+/* FOOD */
+.food-pic {
+  width: 100%;
+}
+.pure-g .food-name {
+  text-align: center;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+/* SHOPPING */
+.thumbnail-pic {
+  display: inline-block;
+  margin: 15px 15px 15px 0px;
+  img {
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+  }
+}
+/* SHOPPING - GROCERY*/
+.table-view-cell.grocery-bundle {
+  padding: 15px;
+}
+.pure-g .grocery-new-bundle {
+  height: 100%;
+  padding: 3px 3px 3px 5px;
+  margin: 0px;
+}
+
+/* FRIDGE */
+.full-height {
+  height: 100%;
+}
+.slide img{
+  height: 100%;
+  width: 100%;
+}
+
+/* RECIPES */
+#filters {
+  ul {
+    margin-bottom: 5px;
+    padding: 0px;
+  }
+  li {
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+  }
+}
+.table-view-cell.recipe-ingredient-item {
+    padding: 12px 0 12px 8px;
+    font-size: 12px;
+    font-weight: 400;
+    /*line-height: 44px;*/
+    color: black;
+    .ingredients {
+      color: #777;
+    }
+    div.text {
+      width: 80%;
+    }   
+    #newIngredient {
+      input[type=text] {
+        height: 100%;
+        width: 70%;
+        padding: 3px 3px 3px 5px;
+        margin: 0px;
+        font-size: 12px;
+      }
+    }
+}
+.table-view-cell.filters {
+  color: #777;
+  .recipeSearch {
+    color: black;
+  }
+  .includeIngredients {
+    color: #8ac13e;
+  }
+  .excludeIngredients {
+    color: #ff5a5f;
+  }
+}
+.table-view-cell.recipe {
+  padding: 15px;
+  line-height: normal;
+  a {
+    width: 100%;
+  }
+  img.thumbnail{
+    width: 100%;
+    border: 1px solid #777;
+  }
+  div.recipe-title {
+    line-height: 21px;
+  }
+  img.star{
+    width: 12px;
+    height: 12px;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+  span.made-it{
+    float: left;
+    margin-left: 5px;
+    font-size: 12px;
+    color: #ff7e1a;
+  }
+  div.quant-container{
+    display: inline-block;
+    font-size: 14px;
+  }
+  div.description{
+    color: #777;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  div.recipe-info {
+    padding-left: 8px;
+    font-size: 14px;
+    color: black;
+  }
+  span.missing {
+    font-size: 12px;
+    color: #777;
+    font-weight: bold;
+  }
+  span.missing-ingredients {
+    font-size: 12px;
+    color: #ff5a5f;
+  }
+}
+.modalScroll {
+  background-color: #efeff4;
+  overflow: auto;
+  .content-padded {
+    margin-top: 10px;
+  }
+}
+.pseudo-header-nav {
+  background-color: rgba(247,247,247,.98);
+  border-bottom: 0;
+  box-shadow: 0 0 1px rgba(0,0,0,.85);
+  position: relative;
+  height: 44px;
+  width: 100%;
+  /*margin-top: 54px;*/
+  top: 0; left: 0; right: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  z-index: 30;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  display: inline-block;
+  .link-button {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 44px;
+    color: black;
+    border: 1px solid #929292;
+    border-radius: 3px;
+    padding: 6px 8px 7px;
+  }
+  .link-icon {
+    padding-top: 8px;
+  }
+  .pseudo-title {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 44px;
+    color: black;
+  }
+}
